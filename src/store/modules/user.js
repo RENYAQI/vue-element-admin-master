@@ -37,16 +37,14 @@ const actions = {
         const { data } = response
 
         if (data.status === 'error') {
-          alert(data.message);
-          reject(new Error(data.message));
-        }
-        else {
+          alert(data.message)
+          reject(new Error(data.message))
+        } else {
           commit('SET_TOKEN', data.token)
           console.log('Received token:', data.token)
           setToken(data.token)
           resolve()
         }
-
       }).catch(error => {
         reject(error)
       })

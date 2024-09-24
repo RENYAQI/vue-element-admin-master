@@ -1,8 +1,8 @@
 <template>
   <el-table :data="list" style="width: 100%;padding-top: 15px;">
-    <el-table-column label="Order_No" min-width="200">
+    <el-table-column label="orderNo" min-width="200">
       <template slot-scope="scope">
-        {{ scope.row.order_no | orderNoFilter }}
+        {{ scope.row.orderNo | orderNoFilter }}
       </template>
     </el-table-column>
     <el-table-column label="Price" width="195" align="center">
@@ -38,7 +38,7 @@ export default {
   },
   data() {
     return {
-      list: null
+      list: []
     }
   },
   created() {
@@ -47,7 +47,7 @@ export default {
   methods: {
     fetchData() {
       transactionList().then(response => {
-        this.list = response.data.items.slice(0, 8)
+        this.list = response.data
       })
     }
   }
